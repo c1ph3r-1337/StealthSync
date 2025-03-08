@@ -6,4 +6,5 @@ discord bot token integration for chat stealthsync
 
 solve the typing bubble problem 
 
+generate token on server and send it to discord using webhook 
 
