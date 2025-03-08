@@ -2,3 +2,8 @@ commands in chat chat like /delete --> clears all the chat
 
 
 discord bot token integration for chat stealthsync
+
+
+solve the typing bubble problem 
+
+
