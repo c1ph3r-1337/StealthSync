@@ -15,7 +15,7 @@
 
 ## User Interface Preview 🎨
 
-Experience a clean, intuitive UI designed for ease of use and maximum privacy. Below is a preview of the Chat Bubble interface:
+Experience a clean, intuitive UI designed for ease of use and maximum privacy. Below is a preview of the StealthSync interface:
 
 ![image](https://github.com/user-attachments/assets/c6710c51-3fb2-45b7-90ee-5fc273c6141d)
 
