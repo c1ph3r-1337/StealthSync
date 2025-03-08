@@ -17,8 +17,7 @@
 
 Experience a clean, intuitive UI designed for ease of use and maximum privacy. Below is a preview of the Chat Bubble interface:
 
-![image](https://github.com/user-attachments/assets/85ac87a5-1561-449d-8515-ada4cc2be5b8)
-
+![image](https://github.com/user-attachments/assets/c6710c51-3fb2-45b7-90ee-5fc273c6141d)
 
 ## Getting Started 🚀
 
