@@ -65,7 +65,7 @@ Experience a clean, intuitive UI designed for ease of use and maximum privacy. B
 
 ## Credits & Contributors 🤝
 
-StealthSync is a collaborative project proudly made by **c!ph3r1337** and **the usual guy**. Their innovative ideas and relentless dedication have shaped this secure and user-friendly chatting experience.
+StealthSync is a collaborative project proudly made by **c!ph3r1337** and **theusualguy**. Their innovative ideas and relentless dedication have shaped this secure and user-friendly chatting experience.
 
 ## Security & Privacy 🔐
 
