@@ -1,6 +1,6 @@
-# Chat Bubble 💬
+# StealthSync 💬
 
-**Chat Bubble** is a cutting-edge, real-time chat application designed for privacy, simplicity, and an engaging user experience. With end-to-end encryption (decryption happens in your browser, not on the server), self-destructing messages, and dynamic random usernames, every conversation stays confidential and secure. Plus, with Discord token authentication and Discord-like commands, managing your chat is both fun and intuitive!
+**StealthSync** is a cutting-edge, real-time chat application designed for privacy, simplicity, and an engaging user experience. With end-to-end encryption (decryption happens in your browser, not on the server), self-destructing messages, and dynamic random usernames, every conversation stays confidential and secure. Plus, with Discord token authentication and Discord-like commands, managing your chat is both fun and intuitive!
 
 ## Features 🚀
 
