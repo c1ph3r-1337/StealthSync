@@ -20,8 +20,6 @@ Experience a clean, intuitive UI designed for ease of use and maximum privacy. B
 ![image](https://github.com/user-attachments/assets/85ac87a5-1561-449d-8515-ada4cc2be5b8)
 
 
-*Note: Replace the image path with the actual location of your screenshot.*
-
 ## Getting Started 🚀
 
 ### Prerequisites
