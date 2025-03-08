@@ -84,8 +84,4 @@ Contributions are welcome! Please fork the repository, make your changes, and op
 
 This project is licensed under the [MIT License](LICENSE).
 
-## Contact 📬
-
-For questions, suggestions, or issues, please open an issue on GitHub or reach out via [your-email@example.com](mailto:your-email@example.com).
-
 Enjoy chatting securely and privately with Chat Bubble! 🎉
