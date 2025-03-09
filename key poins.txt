@@ -1,0 +1,7 @@
+1) encrypted chat
+2) self destruct features
+3) random usernames to insure confidentiality
+4) real time Reponses 
+5) discord token auth.
+6) discord like commands like purge commands
+8) by refreshing usernames changes 
