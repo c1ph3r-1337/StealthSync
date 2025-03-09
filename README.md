@@ -81,4 +81,4 @@ Contributions are welcome! Please fork the repository, make your changes, and op
 
 This project is licensed under the [MIT License](LICENSE).
 
-Enjoy chatting securely and privately with Chat Bubble! 🎉
+Enjoy chatting securely and privately with StealthSync! 🎉
