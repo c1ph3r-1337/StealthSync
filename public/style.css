@@ -489,6 +489,13 @@ input {
     --bg-light: var(--bg-dark);
     --received-bubble: #1f2937;
     --received-text: #e5e7eb;
+     /* Ensure welcome header text is visible */
+     .chat-welcome h3 {
+    color: #f9fafb; /* A bright light color */
+    }
+    .chat-welcome p {
+      color: #d1d5db;
+    }
   }
 
   body {

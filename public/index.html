@@ -1,249 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encrypted Chat</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Encrypted Chat</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Load CryptoJS from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <!-- Load Socket.IO -->
+  <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
-    <div class="app-container">
-        <div class="chat-container">
-            <div class="chat-header">
-                <div class="chat-header-title">
-                    <div class="encryption-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                        </svg>
-                    </div>
-                    <h2>Encrypted Chat</h2>
-                </div>
-                <div class="online-indicator">
-                    <span class="online-dot"></span>
-                    <span class="online-text">Online</span>
-                </div>
-            </div>
-            
-            <div id="chat-box">
-                <div class="chat-welcome">
-                    <div class="welcome-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"></path>
-                        </svg>
-                    </div>
-                    <h3>Welcome to Secure Chat</h3>
-                    <p>All messages are end-to-end encrypted</p>
-                </div>
-            </div>
-            
-            <div class="message-input-container">
-                <div class="input-wrapper">
-                    <input type="text" id="message" placeholder="Type a message..." />
-                    <div class="input-actions">
-                        <button class="emoji-btn" id="emoji-btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                                <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                                <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-                <button id="send" class="send-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
-                </button>
-            </div>
-            
-            <div class="encryption-indicator">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                </svg>
-                <span>End-to-end encrypted</span>
-            </div>
+  <div class="app-container">
+    <div class="chat-container">
+      <div class="chat-header">
+        <div class="chat-header-title">
+          <div class="encryption-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <h2>Encrypted Chat</h2>
         </div>
+        <div class="online-indicator">
+          <span class="online-dot"></span>
+          <span class="online-text">Online</span>
+        </div>
+      </div>
+
+      <div id="chat-box">
+        <div class="chat-welcome">
+          <div class="welcome-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3
+                       m9 9a9 9 0 0 1-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9
+                       m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"></path>
+            </svg>
+          </div>
+          <h3>Welcome to Secure Chat</h3>
+          <p>All messages are end-to-end encrypted</p>
+        </div>
+      </div>
+
+      <div class="message-input-container">
+        <div class="input-wrapper">
+          <input type="text" id="message" placeholder="Type a message..." autocomplete="off" />
+          <div class="input-actions">
+            <button class="emoji-btn" id="emoji-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                   viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <button id="send" class="send-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+               viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+
+      <div class="encryption-indicator">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        <span>End-to-end encrypted</span>
+      </div>
     </div>
-
-    <script>
-        const socket = io();
-        let username = '';
-        
-        // Emoji picker functionality
-        document.getElementById('emoji-btn').addEventListener('click', function() {
-            // Simple emoji insertion - in a real app, you'd use an emoji picker library
-            const emojis = ['😊', '👍', '❤️', '🎉', '🔥', '👋', '😂', '🤔', '👀', '✨'];
-            const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-            const messageInput = document.getElementById('message');
-            messageInput.value += randomEmoji;
-            messageInput.focus();
-        });
-
-        // Get current time in HH:MM format
-        function getCurrentTime() {
-            const now = new Date();
-            return now.getHours().toString().padStart(2, '0') + ':' + 
-                   now.getMinutes().toString().padStart(2, '0');
-        }
-
-        // Add message to chat
-        function addMessageToChat(message, isSent, isSystem = false) {
-            const chatBox = document.getElementById('chat-box');
-            const messageDiv = document.createElement('div');
-            
-            if (isSystem) {
-                messageDiv.className = 'message-row system';
-                messageDiv.innerHTML = `
-                    <div class="system-message">
-                        ${message}
-                    </div>
-                `;
-            } else {
-                messageDiv.className = isSent ? 'message-row sent' : 'message-row received';
-                
-                const time = getCurrentTime();
-                
-                messageDiv.innerHTML = `
-                    <div class="message-bubble">
-                        <div class="message-text">${message}</div>
-                        <div class="message-info">
-                            <div class="message-time">${time}</div>
-                            ${isSent ? '<div class="message-status"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>' : ''}
-                        </div>
-                    </div>
-                `;
-            }
-            
-            chatBox.appendChild(messageDiv);
-            chatBox.scrollTop = chatBox.scrollHeight;
-            
-            // Add animation class after a small delay to trigger animation
-            setTimeout(() => {
-                messageDiv.classList.add('visible');
-            }, 10);
-        }
-
-        socket.on('connect', () => {
-            addMessageToChat('Connected to the secure chat server', false, true);
-        });
-
-        socket.on('username', (user) => {
-            username = user;
-            addMessageToChat(`Welcome, ${username}! Your messages are now encrypted.`, false, true);
-        });
-
-        socket.on('roomFull', () => {
-            alert('Chat is full. Try again later.');
-        });
-
-        socket.on('receiveMessage', (encryptedMessage) => {
-            const bytes = CryptoJS.AES.decrypt(encryptedMessage, 'secret_key');
-            const decryptedMessage = bytes.toString(CryptoJS.enc.Utf8);
-            
-            // Check if this is our own message or someone else's
-            const isSent = decryptedMessage.startsWith(username + ':');
-            
-            // Extract just the message part without the username
-            const messageParts = decryptedMessage.split(':');
-            const sender = messageParts[0];
-            const messageContent = messageParts.slice(1).join(':').trim();
-            
-            // Add the message with the appropriate styling
-            if (isSent) {
-                addMessageToChat(messageContent, true);
-            } else {
-                addMessageToChat(`<strong>${sender}</strong>: ${messageContent}`, false);
-            }
-        });
-
-        document.getElementById('send').addEventListener('click', sendMessage);
-        document.getElementById('message').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
-
-        function sendMessage() {
-            const messageInput = document.getElementById('message');
-            const message = messageInput.value.trim();
-            
-            if (message) {
-                const encryptedMessage = CryptoJS.AES.encrypt(`${username}: ${message}`, 'secret_key').toString();
-                socket.emit('sendMessage', encryptedMessage);
-                messageInput.value = '';
-                
-                // Show sending animation
-                const sendBtn = document.getElementById('send');
-                sendBtn.classList.add('sending');
-                setTimeout(() => {
-                    sendBtn.classList.remove('sending');
-                }, 500);
-            }
-        }
-
-        socket.on('clearChat', () => {
-            document.getElementById('chat-box').innerHTML = '';
-            addMessageToChat('Chat has been cleared', false, true);
-        });
-        
-        // Add typing indicator (simulated)
-        let typingTimeout;
-        document.getElementById('message').addEventListener('input', function() {
-            clearTimeout(typingTimeout);
-            // In a real app, you would emit a 'typing' event to the server here
-            
-            // Simulate receiving a typing indicator occasionally
-            if (Math.random() > 0.7 && this.value.length > 0) {
-                showTypingIndicator();
-                
-                typingTimeout = setTimeout(() => {
-                    hideTypingIndicator();
-                }, 3000);
-            }
-        });
-        
-        function showTypingIndicator() {
-            const existingIndicator = document.querySelector('.typing-indicator');
-            if (existingIndicator) return;
-            
-            const chatBox = document.getElementById('chat-box');
-            const typingDiv = document.createElement('div');
-            typingDiv.className = 'message-row received typing-indicator';
-            
-            typingDiv.innerHTML = `
-                <div class="message-bubble typing">
-                    <div class="typing-dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            `;
-            
-            chatBox.appendChild(typingDiv);
-            chatBox.scrollTop = chatBox.scrollHeight;
-            
-            setTimeout(() => {
-                typingDiv.classList.add('visible');
-            }, 10);
-        }
-        
-        function hideTypingIndicator() {
-            const typingIndicator = document.querySelector('.typing-indicator');
-            if (typingIndicator) {
-                typingIndicator.classList.remove('visible');
-                setTimeout(() => {
-                    typingIndicator.remove();
-                }, 300);
-            }
-        }
-    </script>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
