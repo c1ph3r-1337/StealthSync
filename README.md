@@ -32,8 +32,8 @@ Experience a clean, intuitive UI designed for ease of use and maximum privacy. B
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/yourusername/chat-bubble.git
-   cd chat-bubble
+   git clone https://github.com/c1ph3r-1337/StealthSync.git
+   cd StealthSync
    ```
 
 2. **Install Dependencies:**
